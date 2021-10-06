@@ -9,5 +9,8 @@
         <module name="karlinski-cop3330-assignment3" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="karlinski-cop3330-assignment3" target="16" />
+    </bytecodeTargetLevel>
   </component>
 </project>
