@@ -1,0 +1,14 @@
+@startuml
+class ex41.FileManager
+{
+    + ArrayList<String> getPeopleListFromFile()
+    + void writePeopleListToOutputFile(ArrayList<String>)
+
+    - {static} String OUTPUT_FILE_NAME
+    - {static} String INPUT_FILE_NAME
+
+    - void sortPeopleList(ArrayList<String>)
+    - void output(String)
+    - File createOutputFile()
+}
+@enduml
