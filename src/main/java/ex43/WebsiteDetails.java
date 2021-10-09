@@ -11,6 +11,7 @@ public class WebsiteDetails
 
     public WebsiteDetails(String siteName, String authorName, String createJsFolder, String createCssFolder)
     {
+        // take user inputs and initialize website details
         this.siteName = siteName;
         this.authorName = authorName;
         this.createJsFolder = createJsFolder.equalsIgnoreCase("y");

@@ -12,13 +12,13 @@ public class App
         // initialize a WebsiteBuilder instance
         WebsiteBuilder websiteBuilder = new WebsiteBuilder();
 
-        // prompt for website requirements
+        // get website details from user
         String siteName = websiteBuilder.getInput("Site name: ");
         String authorName = websiteBuilder.getInput("Author: ");
         String createJsFolder = websiteBuilder.getInput("Do you want a folder for JavaScript? ");
         String createCssFolder = websiteBuilder.getInput("Do you want a folder for CSS? ");
 
-        // initialize a WebsiteDetails object and set the details
+        // initialize a WebsiteDetails object using the user's request
         WebsiteDetails websiteDetails = new WebsiteDetails(siteName, authorName, createJsFolder, createCssFolder);
 
         // build the directory and the files
