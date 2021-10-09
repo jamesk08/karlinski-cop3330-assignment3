@@ -5,8 +5,6 @@
 
 package ex43;
 
-import java.text.MessageFormat;
-
 public class WebsiteDetails
 {
     private static final String ROOT_PATH = "./src/main/java/ex43/websites/";
