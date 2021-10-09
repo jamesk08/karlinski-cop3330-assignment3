@@ -7,6 +7,8 @@ package ex43;
 
 public class App
 {
+    private static final String ROOT_PATH = "./src/main/java/ex43/websites/";
+
     public static void main(String[] args)
     {
         // initialize a WebsiteBuilder instance
@@ -19,7 +21,13 @@ public class App
         String createCssFolder = websiteBuilder.getInput("Do you want a folder for CSS? ");
 
         // initialize a WebsiteDetails object using the user's request
-        WebsiteDetails websiteDetails = new WebsiteDetails(siteName, authorName, createJsFolder, createCssFolder);
+        WebsiteDetails websiteDetails = new WebsiteDetails(
+            siteName,
+            authorName,
+            createJsFolder,
+            createCssFolder,
+            ROOT_PATH
+        );
 
         // build the directory and the files
         websiteBuilder.createWebsite(websiteDetails);

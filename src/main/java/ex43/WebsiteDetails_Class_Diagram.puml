@@ -1,3 +1,13 @@
 @startuml
-' tbd
+class ex43.WebsiteDetails
+{
+    - {static} String ROOT_PATH
+
+    + boolean createJsFolder
+    + boolean createCssFolder
+    + String authorName
+    + String htmlTemplate
+    + String siteName
+    + String websiteDirPath
+}
 @enduml

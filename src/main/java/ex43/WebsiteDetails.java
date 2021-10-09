@@ -7,23 +7,27 @@ package ex43;
 
 public class WebsiteDetails
 {
-    private static final String ROOT_PATH = "./src/main/java/ex43/websites/";
 
-    public WebsiteDetails(String siteName, String authorName, String createJsFolder, String createCssFolder)
+    public WebsiteDetails(
+        String siteName,
+        String authorName,
+        String createJsFolder,
+        String createCssFolder,
+        String rootPath)
     {
         // take user inputs and initialize website details
         this.siteName = siteName;
         this.authorName = authorName;
         this.createJsFolder = createJsFolder.equalsIgnoreCase("y");
         this.createCssFolder = createCssFolder.equalsIgnoreCase("y");
-        this.websiteDirPath = ROOT_PATH + siteName;
+        this.websiteDirPath = rootPath + siteName;
     }
 
     public String htmlTemplate =
         "<!DOCTYPE html>\n" +
             "\t<head>\n" +
-                "\t\t<meta charset=\"utf-8\" />\n" +
-                "\t\t<meta name=\"Author: {0}\" content=\"%s\" />\n" +
+                "\t\t<meta charset=\"UTF-8\" />\n" +
+                "\t\t<meta name=\"author\" content=\"{0}\" />\n" +
                 "\t\t<title>{1}</title>\n" +
             "\t</head>\n" +
             "\t<body>\n" +

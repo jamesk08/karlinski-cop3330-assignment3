@@ -1,3 +1,13 @@
 @startuml
-' tbd
+class ex43.WebsiteBuilder
+{
+    - {static} Scanner scanner
+    - {static} String INDEX_FILE_NAME
+    - {static} String JS_FOLDER_NAME
+    - {static} String CSS_FOLDER_NAME
+
+    + void createWebsite(WebsiteDetails)
+    + void output(String,boolean)
+    + String getInput(String)
+}
 @enduml
