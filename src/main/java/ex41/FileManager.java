@@ -1,3 +1,8 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
+ *  Copyright 2021 James Karlinski
+ */
+
 package ex41;
 
 import java.io.*;
@@ -11,34 +16,34 @@ import java.util.Scanner;
 
 public class FileManager
 {
-    private static final String OUTPUT_FILE_NAME = "./src/main/java/ex41/exercise41_output.txt";
-    private static final String INPUT_FILE_NAME = "./src/main/java/ex41/exercise41_input.txt";
+    private static String _outputFilePath = "";
+    private static String _inputFilePath = "";
 
-    public ArrayList<String> getPeopleListFromFile() throws FileNotFoundException
+    public FileManager(String outPutFilePath, String inputFilePath)
     {
-        // Initialize file using the input file name
-        File inputFile = new File(INPUT_FILE_NAME);
+        _outputFilePath = outPutFilePath;
+        _inputFilePath = inputFilePath;
+    }
 
-        // Check if input file exists
-        if (!inputFile.exists())
-        {
-            // Output failure and exit
-            output("Input file was not found.");
+    public ArrayList<String> getPeopleListFromFile()
+    {
+        // initialize file scanner
+        Scanner fileScanner = null;
+        try {
+            File inputFile = new File(_inputFilePath);
+            fileScanner = new Scanner(inputFile);
+        } catch (FileNotFoundException e) {
+            output("Failed to find the file.");
             System.exit(0);
         }
 
-        // Create file scanner
-        Scanner fileScanner = new Scanner(inputFile);
-
-        // initialize people list to store list items read from input file
+        // read from input file
         ArrayList<String> peopleList = new ArrayList<>();
-
-        // check if line exists then loop each line and add line item
         while (fileScanner.hasNext())
         {
+            // add each line to peopleList
             peopleList.add(fileScanner.nextLine());
         }
-        // close file scanner
         fileScanner.close();
 
         // sort people list
@@ -55,7 +60,7 @@ public class FileManager
             // create new file for each execution
             File outputFile = createOutputFile();
 
-            // initialize file writer
+            // initialize a new file writer instance
             FileWriter fileWriter = new FileWriter(outputFile);
 
             // append header and divider to the output file
@@ -65,11 +70,9 @@ public class FileManager
             // loop through each item in people list
             for (String person: peopleList)
             {
-                // write the current person name into the file
-                fileWriter.append(person + "\n");
+                // write the current person's name into the output file
+                fileWriter.append(person).append("\n");
             }
-
-            // close file writer
             fileWriter.close();
         }
         catch (IOException e)
@@ -94,7 +97,7 @@ public class FileManager
     private File createOutputFile() throws IOException
     {
         // initialize the path object for output file
-        Path outputFilePath = Paths.get(OUTPUT_FILE_NAME);
+        Path outputFilePath = Paths.get(_outputFilePath);
         try
         {
             // delete the existing output file if exists
@@ -106,20 +109,11 @@ public class FileManager
             System.exit(0);
         }
 
-        // initialize new file object
-        File newOutputFile = new File(OUTPUT_FILE_NAME);
-        try
-        {
-            // create the new output file in directory
-            newOutputFile.createNewFile();
-        }
-        catch (IOException e)
-        {
-            output("Failed to create new output file.");
-            System.exit(0);
-        }
+        // create the new output file in directory
+        File newOutputFile = new File(_outputFilePath);
+        newOutputFile.createNewFile();
 
-        // return newly created file
+        // return a new output file
         return newOutputFile;
     }
 }
