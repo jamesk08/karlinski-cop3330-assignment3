@@ -21,7 +21,8 @@ public class FileManagerTests
     private static final String INPUT_FILE_PATH = "./src/test/java/Ex41Test/exercise41_test_input.txt";
 
     @Test
-    public void getPeopleListFromFile_shouldReturnExpectedNameList() {
+    public void getPeopleListFromFile_shouldReturnExpectedNameList()
+    {
         // arrange
         String[] expectedNamesWithExpectedOrder = new String[] { "A, Test", "AB, Test", "B, Test", "C, Test", "D, Test" };
         FileManager fileManager = new FileManager(OUTPUT_FILE_PATH, INPUT_FILE_PATH);
@@ -40,7 +41,8 @@ public class FileManagerTests
     }
 
     @Test
-    public void writePeopleListToOutputFile_shouldWriteExpectedNamesToOutputFile() {
+    public void writePeopleListToOutputFile_shouldWriteExpectedNamesToOutputFile()
+    {
         // arrange
         String[] expectedNamesWithExpectedOrder = new String[] {
                 "Total of 5 names", "-----------------", "A, Test", "AB, Test", "B, Test", "C, Test", "D, Test" };

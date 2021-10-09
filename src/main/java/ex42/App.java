@@ -5,5 +5,24 @@
 
 package ex42;
 
-public class App {
+import java.util.ArrayList;
+
+public class App
+{
+    private static final String INPUT_FILE_PATH = "./src/main/java/ex42/exercise42_input.txt";
+
+    public static void main(String[] args)
+    {
+        // initialize an instance of FileParser
+        FileParser fileParser = new FileParser(INPUT_FILE_PATH);
+
+        // get raw lines from input file
+        ArrayList<String> lines = fileParser.getLinesFromInputFile();
+
+        // parse raw lines and make the look pretty
+        String displayTable = fileParser.parseTable(lines);
+
+        // display final parsed good-looking table
+        fileParser.output(displayTable);
+    }
 }

@@ -5,7 +5,6 @@
 
 package ex41;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class App
@@ -15,7 +14,6 @@ public class App
 
     public static void main(String[] args)
     {
-        // arrange
         // initialize a FileManager instance
         FileManager fileManager = new FileManager(OUTPUT_FILE_PATH, INPUT_FILE_PATH);
 
