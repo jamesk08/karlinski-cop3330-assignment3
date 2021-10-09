@@ -17,7 +17,7 @@ public class App
         FileParser fileParser = new FileParser(INPUT_FILE_PATH);
 
         // get raw lines from input file
-        ArrayList<String> lines = fileParser.getLinesFromInputFile();
+        ArrayList<String> lines = fileParser.getRawLines();
 
         // parse raw lines and make the look pretty
         String displayTable = fileParser.parseTable(lines);

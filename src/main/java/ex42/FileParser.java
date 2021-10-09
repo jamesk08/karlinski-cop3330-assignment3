@@ -19,7 +19,7 @@ public class FileParser
         _inputFilePath = inputFilePath;
     }
 
-    public ArrayList<String> getLinesFromInputFile()
+    public ArrayList<String> getRawLines()
     {
         // initialize file scanner
         Scanner fileScanner = null;
