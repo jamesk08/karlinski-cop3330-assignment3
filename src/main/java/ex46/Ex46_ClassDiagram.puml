@@ -1,0 +1,15 @@
+ ' UCF COP3330 Fall 2021 Assignment 3 Solution
+ ' Copyright 2021 James Karlinski
+
+@startuml
+class ex46.WordFrequencyFinder
+{
+    - {static} String _inputFilePath
+    - String getStars(int)
+
+    + void output(String)
+    + String buildDisplayMessage(List<Map.Entry<String,Integer>>)
+    + List<Map.Entry<String,Integer>> sortWords(Map<String,Integer>)
+    + Map<String,Integer> readFromFile()
+}
+@enduml
