@@ -13,6 +13,5 @@ class ex41.FileManager
     - File createOutputFile()
     - void sortPeopleList(ArrayList<String>)
     - void output(String)
-
 }
 @enduml

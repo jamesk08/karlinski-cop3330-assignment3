@@ -1,0 +1,18 @@
+ ' UCF COP3330 Fall 2021 Assignment 3 Solution
+ ' Copyright 2021 James Karlinski
+
+@startuml
+class ex45.WordFinder
+{
+    - {static} Scanner consoleScanner
+    - {static} String WORD_TO_FIND
+    - {static} String WORD_TO_REPLACE
+    - {static} String _outputRootPath
+    - {static} String _inputFilePath
+
+    + void output(String)
+    + String getFileContent()
+    + String replaceContentAndSave(String,String)
+    + String getInput(String)
+}
+@enduml

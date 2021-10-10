@@ -24,3 +24,4 @@ hs_err_pid*
 /src/main/java/ex41/exercise41_output.txt
 /src/test/java/Ex41Test/exercise41_test_output.txt
 /src/main/java/ex45/output/*.txt
+/src/test/java/Ex45Test/output/*.txt

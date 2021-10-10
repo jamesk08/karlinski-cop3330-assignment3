@@ -16,16 +16,20 @@ public class WordFinder
 
     public WordFinder(String inputPath, String outPutRootPath)
     {
+        // set the input and output values on initialization
         _inputFilePath = inputPath;
         _outputRootPath = outPutRootPath;
     }
 
     public String getFileContent()
     {
+        // initialize an instance of input file
         File file = new File(_inputFilePath);
+
         String fileContent = null;
         try
         {
+            // read the input file content
             fileContent = FileUtils.readFileToString(file, "UTF-8");
         }
         catch (IOException e)
@@ -34,19 +38,28 @@ public class WordFinder
             output("Failed to read from input file.");
             System.exit(0);
         }
+
+        // return the input file content
         return fileContent;
     }
 
     public String replaceContentAndSave(String fileContent, String outputFileName)
     {
+        // replace all the instances of the word "utilize" to "use"
         String replacedFileContent = fileContent.replaceAll(WORD_TO_FIND, WORD_TO_REPLACE);
+
+        // build the path for the output file
         String outputFilePath = _outputRootPath + outputFileName + ".txt";
 
+        // initialize output file
         File outputFile = new File(outputFilePath);
+
+        // delete the file if exists
         if (outputFile.exists()) outputFile.delete();
 
         try
         {
+            // create the output file
             outputFile.createNewFile();
         }
         catch (IOException e)
@@ -58,6 +71,7 @@ public class WordFinder
 
         try
         {
+            // initialize writer and write the replaced content into the output file
             FileWriter fileWriter = new FileWriter(outputFile);
             fileWriter.write(replacedFileContent);
             fileWriter.close();
@@ -69,6 +83,7 @@ public class WordFinder
             System.exit(0);
         }
 
+        // return the replaced file content
         return replacedFileContent;
     }
 
