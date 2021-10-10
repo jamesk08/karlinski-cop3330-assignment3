@@ -15,6 +15,7 @@ import java.text.DecimalFormat;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ProductManager
@@ -32,46 +33,6 @@ public class ProductManager
         setProductsListFromJsonData(jsonDataFilePath);
     }
 
-    public String takeSearchInputAndSearch()
-    {
-        String productResultMessage = "";
-        Product productResult = null;
-
-        // get user product name criteria from user until a product is found
-        do
-        {
-            // get product name from input
-            String productNameSearchFilter = getInput("What is the product name? ");
-
-            // try finding a product from products with provided user input
-            productResult = findProduct(productNameSearchFilter);
-
-            // if product is not null then build a display message
-            if(productResult != null)
-            {
-                DecimalFormat decimalFormatter = new DecimalFormat("0.00");
-                productResultMessage = MessageFormat.format(
-                    "Name: {0}\n" +
-                    "Price: ${1}\n" +
-                    "Quantity: {2}",
-                    productResult.name,
-                    decimalFormatter.format(productResult.price),
-                    productResult.quantity
-                );
-            }
-            else
-            {
-                // output not found message
-                output("Sorry, that product was not found in our inventory.\n");
-            }
-
-            // let user try again if product result is null
-        } while(productResult == null);
-
-        // return product details message
-        return productResultMessage;
-    }
-
     public Product findProduct(String productNameSearchFilter)
     {
         Product productResult = null;
@@ -82,7 +43,7 @@ public class ProductManager
             boolean productExists =
                 product.name != null &&
                 !product.name.isEmpty() &&
-                product.name.toLowerCase().contains(productNameSearchFilter);
+                product.name.toLowerCase().contains(productNameSearchFilter.toLowerCase());
 
             // if match then set the result and get out of the loop
             if (productExists)
@@ -96,13 +57,36 @@ public class ProductManager
         return productResult;
     }
 
+    public String buildResultMessage(Product productResult)
+    {
+        // if product is not null then build a display message
+        if(productResult != null)
+        {
+            DecimalFormat decimalFormatter = new DecimalFormat("0.00");
+            return MessageFormat.format(
+                "Name: {0}\n" +
+                "Price: ${1}\n" +
+                "Quantity: {2}",
+                productResult.name,
+                decimalFormatter.format(productResult.price),
+                productResult.quantity
+            );
+        }
+        else
+        {
+            // output not found message
+            output("Sorry, that product was not found in our inventory.\n");
+            return null;
+        }
+    }
+
     public void output(String message)
     {
         // display user message
         System.out.print(message);
     }
 
-    private String getInput(String message)
+    public String getInput(String message)
     {
         // display a prompt for user
         output(message);

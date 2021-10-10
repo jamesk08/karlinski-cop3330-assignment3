@@ -1,3 +1,27 @@
 @startuml
-'TBD
+class ex44.Product
+{
+    + String name
+    + int quantity
+    + double price
+}
+
+class ex44.ProductManager
+{
+    - {static} String PRODUCTS
+    - {static} String NAME
+    - {static} String PRICE
+    - {static} String QUANTITY
+    - {static} Scanner scanner
+
+    - List<Product> products
+
+    - String getInput(String)
+    - JsonElement getValue(JsonElement,String)
+    - void setProductsListFromJsonData(String)
+
+    + Product findProduct(String)
+    + void output(String)
+    + String takeSearchInputAndSearch()
+}
 @enduml

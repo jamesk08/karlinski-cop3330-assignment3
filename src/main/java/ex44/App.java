@@ -11,13 +11,31 @@ public class App
 
     public static void main(String[] args)
     {
+        // get user product name criteria from user until a product is found
+        startSearch();
+    }
+
+    private static void startSearch()
+    {
         // initialize an instance of ProductManager and load products list from JSON file
         ProductManager productManager = new ProductManager(JSON_DATA_FILE_PATH);
 
-        // get user input until a product is found
-        String foundProductDetailsMessage = productManager.takeSearchInputAndSearch();
+        // get user product name criteria from user until a product is found
+        Product productResult = null;
+        do
+        {
+            // get product name from input
+            String productNameSearchFilter = productManager.getInput("What is the product name? ");
 
-        // output the found product details
-        productManager.output(foundProductDetailsMessage);
+            // try finding a product from products with provided user input
+            productResult = productManager.findProduct(productNameSearchFilter);
+
+            String productResultMessage = productManager.buildResultMessage(productResult);
+
+            // output the found product details
+            productManager.output(productResultMessage);
+
+            // let user try again if product result is null
+        } while(productResult == null);
     }
 }
