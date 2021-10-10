@@ -9,6 +9,7 @@ public class Product
 {
     public Product(String name, double price, int quantity)
     {
+        // set values on class initialization
         this.name = name;
         this.quantity = quantity;
         this.price = price;
