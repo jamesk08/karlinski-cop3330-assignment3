@@ -19,12 +19,12 @@ class ex44.ProductManager
 
     - List<Product> products
 
-    - String getInput(String)
     - JsonElement getValue(JsonElement,String)
     - void setProductsListFromJsonData(String)
 
-    + Product findProduct(String)
     + void output(String)
-    + String takeSearchInputAndSearch()
+    + String buildResultMessage(Product)
+    + String getInput(String)
+    + Product findProduct(String)
 }
 @enduml
