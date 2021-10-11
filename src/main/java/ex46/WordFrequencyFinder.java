@@ -24,9 +24,16 @@ public class WordFrequencyFinder
     {
         Map<String, Integer> wordsAndCounts = new LinkedHashMap<>();
         Scanner fileScanner = null;
-        try {
-            fileScanner = new Scanner(new File(_inputFilePath));
-        } catch (FileNotFoundException e) {
+        try
+        {
+            // create a file instance
+            File file = new File(_inputFilePath);
+
+            // create fileScanner
+            fileScanner = new Scanner(file);
+        }
+        catch (FileNotFoundException e)
+        {
             e.printStackTrace();
             output("Failed to read from input file.");
             System.exit(0);
@@ -34,8 +41,15 @@ public class WordFrequencyFinder
 
         while (fileScanner.hasNext())
         {
+            // get key (snake, mushroom or badger)
             String key = fileScanner.next();
-            int currentCount = wordsAndCounts.get(key) != null ? wordsAndCounts.get(key) + 1 : 1;
+
+            // if null that means current value hasn't been set before so its
+            int currentCount = wordsAndCounts.get(key) != null
+                ? wordsAndCounts.get(key) + 1
+                : 1;
+
+            // add it to key value pair
             wordsAndCounts.put(key, currentCount);
         }
 
@@ -44,8 +58,13 @@ public class WordFrequencyFinder
 
     public List<Map.Entry<String, Integer>> sortWords(Map<String, Integer> wordsAndCounts)
     {
+        // create a list from the key value pair
         List<Map.Entry<String, Integer>> wordsList = new ArrayList<>(wordsAndCounts.entrySet());
+
+        // sort the list
         wordsList.sort(Map.Entry.comparingByValue());
+
+        // return sorted list
         return wordsList;
     }
 
@@ -57,8 +76,11 @@ public class WordFrequencyFinder
         // because list is sorted, loop reverse
         for (int i = sortedWords.size() - 1; i >= 0; i--)
         {
+            // adjust spaces so it would look good
             String word = String.format("%-9s", sortedWords.get(i).getKey() + ":");
             String stars = String.format("%-5s", getStars(sortedWords.get(i).getValue()));
+
+            // create a string for the word and its usage
             String wordAndCountMessage = MessageFormat.format("{0} {1}\n", word, stars);
             stringBuilder.append(wordAndCountMessage);
         }
